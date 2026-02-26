@@ -10,7 +10,6 @@
     ./hyprland.nix
     ./custom.nix
 
-    ../../../utilities/spicetify.nix
     ../../../utilities/flatpak.nix
 
     ../../../programs/starship.nix
@@ -28,7 +27,6 @@
     ../../../programs/lazygit.nix
     ../../../programs/mpv.nix
     ../../../programs/fastfetch.nix
-    ../../../programs/obs-studio.nix
     ../../../programs/zathura.nix
     ../../../programs/vscode.nix
     ../../../programs/ytmusic.nix
