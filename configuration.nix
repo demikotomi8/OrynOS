@@ -10,7 +10,6 @@
     inputs.home-manager.nixosModules.home-manager
     ./hosts/${hostname}/hardware-configuration.nix
     ./hosts/${hostname}/default.nix
-    ./hosts/${hostname}/nvidia.nix
 
     # Hardware Support
     inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -32,65 +31,7 @@
       ];
     };
   };
-
-  # --- 2. Stylix Theming Engine ---
-
-  stylix = {
-    enable = true;
-    # Default to a nice dark theme (Catppuccin Mocha)
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
-
-    polarity = "dark";
-
-    icons = {
-      enable = true;
-      package = pkgs.papirus-icon-theme;
-      dark = "Papirus";
-      light = "Papirus";
-    };
-
-    # Cursor
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 20;
-    };
-
-    fonts = {
-      monospace = {
-        package = pkgs.ibm-plex;
-        name = "IBM Plex Mono";
-      };
-
-      sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
-
-      serif = {
-        # Note: 'pkgs.literate' -> 'pkgs.literata' in official nixpkgs
-        package = pkgs.literata;
-        name = "Literata";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-
-      # Set default sizes
-      sizes = {
-        terminal = 10;
-        applications = 10;
-        desktop = 10;
-      };
-    };
-
-    # We can control what stylix targets here
-    targets.grub.enable = true;
-    targets.console.enable = true;
-  };
-
+  
   # --- 3. CLI Superpowers (Comma) ---
   programs.nix-index-database.comma.enable = true;
   # Keeps the index updated automatically
