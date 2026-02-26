@@ -10,9 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # 2. Stylix (Theming Engine)
-    stylix.url = "github:danth/stylix";
-
     # 3. Nix-Index (Command-not-found powers)
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -30,10 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nvix.url = "github:niksingh710/nvix";
 
@@ -45,17 +38,15 @@
     self,
     nixpkgs,
     home-manager,
-    stylix,
     nix-index-database,
     nur,
     nix-flatpak,
-    spicetify-nix,
     nixos-hardware,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    username = "oryn";
-    hostname = "oryn-nixos";
+    username = "pilot";
+    hostname = "nixos";
 
     # Package Config
     pkgsConfig = {
@@ -80,7 +71,6 @@
 
         # Modules injected directly here
         nix-flatpak.nixosModules.nix-flatpak
-        stylix.nixosModules.stylix
         nix-index-database.nixosModules.nix-index
 
         # Global Nixpkgs Config
@@ -100,12 +90,6 @@
         config = pkgsConfig;
         overlays = pkgsOverlays;
       };
-
-      extraSpecialArgs = sharedSpecialArgs;
-      modules = [
-        stylix.homeManagerModules.stylix
-        ./home/${username}/${hostname}/default.nix
-      ];
     };
   };
 }
